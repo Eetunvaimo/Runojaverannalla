@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuva</title>
+    <link rel="stylesheet" href="galleria.css">
+    <style>
+
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            border: 5px solid white;
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #close-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div id="lightbox">
+        <button id="close-btn" onclick="closeLightbox()">Sulje</button>
+        <img id="lightbox-img" />
+    </div>
+
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+        const image = params.get("image");
+
+
+        if (image) {
+            document.getElementById("lightbox-img").src = image;
+        }
+
+
+        function closeLightbox() {
+            window.close();
+        }
+    </script>
+</body>
+</html>
