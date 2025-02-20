@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.getElementById("gallery");
     const packageGalleryContainer = document.getElementById("package-gallery-container");
-    const totalImages = 40;
+    const totalImages = 50;
     const imagePath = "Yksityiskuvat/";
     let imageCounter = 1;
-
 
     const imageTexts = {
         1: "EAN 6430082011290",
@@ -47,6 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
         38: "EAN 6430082010040",
         39: "EAN 6430082010200",
         40: "EAN 6430082011085",
+        41: "EAN 6430082010248",
+        42: "EAN 6430082010118",
+        43: "EAN 6430082010101",
+        44: "EAN 6430082010002",
+        45: "EAN 6430082010231",
+        46: "EAN 6430082010057",
+        47: "EAN 6430082010224",
+        48: "EAN 6430082010194",
+        49: "EAN 6430082010156",
+        50: "EAN 6430082010002",
+        
     };
 
     for (let i = 1; i <= totalImages; i++) {
