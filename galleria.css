@@ -1,12 +1,12 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nothing+You+Could+Do&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nothing+You+Could+Do&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Ruluko&display=swap');
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: cursive;
-    font-style: oblique;
+
     font-weight: 100;
     text-align: center;
     margin: 0;
@@ -23,6 +23,7 @@ body {
 
 h1 {
     margin: 20px 0;
+    font-family: 'Cormorant Garamond', 'Open Sans', 'Oswald', 'Nothing You Could Do', sans-serif;
 }
 
 h2 {
@@ -30,6 +31,7 @@ h2 {
     font-size: 2.5em;
     letter-spacing: 2px;
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    font-family: 'Cormorant Garamond', 'Open Sans', 'Oswald', 'Nothing You Could Do', sans-serif;
 }
 
 .gallery {
@@ -71,7 +73,8 @@ h2 {
 }
 
 p {
-    font-family: cursive;
+    font-family: 'Cormorant Garamond', 'Open Sans', 'Oswald', 'Nothing You Could Do', 'Ruluko', sans-serif;
+    font-size: 2rem;
 }
 
 .gallery-item img:hover {
@@ -200,7 +203,7 @@ p {
 
 #Valikko {
     position: absolute; 
-    top: 5vw; 
+    top: 1vw; 
     right: 8%; 
     height: 1%;
     border: none;
