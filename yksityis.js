@@ -56,8 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
         48: "EAN 6430082010194",
         49: "EAN 6430082010156",
         50: "EAN 6430082010002",
-        
     };
+
+    // Lista kuvista, jotka korvataan kuvalla 51
+    const replaceWith51 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19, 22, 24, 28, 29, 30, 33, 34, 35, 37, 40];
 
     for (let i = 1; i <= totalImages; i++) {
         if (i >= 100 && i <= 199) {
@@ -68,11 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryItem.classList.add("gallery-item");
 
         const img = document.createElement("img");
-        img.src = `${imagePath}${i}.jpg`;
-        img.alt = `Kuva ${i}`;
+        // Jos i kuuluu korvattavien listaan, käytä kuvaa 51
+        const imageIndex = replaceWith51.includes(i) ? 51 : i;
+        img.src = `${imagePath}${imageIndex}.jpg`;
+        img.alt = `Kuva ${i}`; // Alt-teksti pysyy alkuperäisenä
         img.loading = "lazy";
         img.onclick = () => {
-            const imageUrl = `${imagePath}${i}.jpg`;
+            const imageUrl = `${imagePath}${imageIndex}.jpg`;
             const eanText = encodeURIComponent(imageTexts[imageCounter] || "");
             const url = `popup.html?image=${imageUrl}&ean=${eanText}`;
             window.open(url, "_blank");
@@ -94,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         imageCounter++;
     }
 
+    // Loput koodista (packages-osio ja valikko) pysyy samana
     packages.forEach(pkg => {
         const packageGallery = document.createElement("div");
         packageGallery.classList.add("package-gallery");
@@ -140,4 +145,3 @@ document.getElementById("Valikko").addEventListener("click", function() {
         menu.style.top = "-400px"; 
     }
 });
-
