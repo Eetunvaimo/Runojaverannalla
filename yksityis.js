@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         50: "EAN 6430082010002",
     };
 
-    // Lista kuvista, jotka korvataan kuvalla 51
+    // Lista kuvista, jotka korvataan kuvalla 51 ja joilla EAN piilotetaan
     const replaceWith51 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19, 22, 24, 28, 29, 30, 33, 34, 35, 37, 40];
 
     for (let i = 1; i <= totalImages; i++) {
@@ -73,11 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Jos i kuuluu korvattavien listaan, käytä kuvaa 51
         const imageIndex = replaceWith51.includes(i) ? 51 : i;
         img.src = `${imagePath}${imageIndex}.jpg`;
-        img.alt = `Kuva ${i}`; // Alt-teksti pysyy alkuperäisenä
+        img.alt = `Kuva ${i}`;
         img.loading = "lazy";
         img.onclick = () => {
             const imageUrl = `${imagePath}${imageIndex}.jpg`;
-            const eanText = encodeURIComponent(imageTexts[imageCounter] || "");
+            // Jos kuva on 51, EAN ei näy popupissa
+            const eanText = replaceWith51.includes(i) ? "" : encodeURIComponent(imageTexts[imageCounter] || "");
             const url = `popup.html?image=${imageUrl}&ean=${eanText}`;
             window.open(url, "_blank");
         };
@@ -88,7 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const customText = document.createElement("div");
         customText.classList.add("custom-text");
-        customText.textContent = imageTexts[imageCounter] || "";
+        // Jos kuva on 51, EAN piilotetaan jättämällä teksti tyhjäksi
+        customText.textContent = replaceWith51.includes(i) ? "" : (imageTexts[imageCounter] || "");
 
         galleryItem.appendChild(img);
         galleryItem.appendChild(caption);
